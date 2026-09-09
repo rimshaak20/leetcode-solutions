@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/rimshaak20/leetcode-solutions/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
 | [1752-check-if-array-is-sorted-and-rotated](https://github.com/rimshaak20/leetcode-solutions/tree/master/1752-check-if-array-is-sorted-and-rotated) |
 ## Two Pointers
 |  |
@@ -14,24 +15,59 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [3870-count-commas-in-range](https://github.com/rimshaak20/leetcode-solutions/tree/master/3870-count-commas-in-range) |
+<<<<<<< HEAD
 
-#Bugs & learning
-Bug: Integer Overflow in reversePairs (Merge Sort)
 
-Problem: LeetCode 493 – Reverse Pairs (nums[i] > 2 * nums[j])
 
-Bug faced:
-Test case [2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647] gave output 15 instead of expected 0.
+=======
+## Binary Search
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Divide and Conquer
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Binary Indexed Tree
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Segment Tree
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Merge Sort
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Ordered Set
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+## Treap
+|  |
+| ------- |
+| [0493-reverse-pairs](https://github.com/rimshaak20/leetcode-solutions/tree/master/0493-reverse-pairs) |
+>>>>>>> 75f1ad906b448175ca4b841f5a44b4a83de02467
+<!---LeetCode Topics End-->
 
-Root cause:
-2 * arr[right] overflows when arr[right] is near Integer.MAX_VALUE, wrapping to a negative number in int arithmetic. So arr[left] > (negative number) becomes true for every pair — false positives.
+## Bugs & Learnings
 
-Also learned: casting after the multiplication ((long)(2*arr[right])) doesn't help — the overflow already happened inside the parentheses. The cast must be applied before the multiplication so the whole operation runs in long.
+### Bug: Integer Overflow in `reversePairs` (Merge Sort)
 
-Fix:
+**Problem:** LeetCode 493 – Reverse Pairs (`nums[i] > 2 * nums[j]`)
+
+**Bug faced:**
+Test case `[2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647]` gave output `15` instead of expected `0`.
+
+**Root cause:**
+`2 * arr[right]` overflows when `arr[right]` is near `Integer.MAX_VALUE`, wrapping to a negative number in `int` arithmetic. So `arr[left] > (negative number)` becomes true for every pair — false positives.
+Also learned: casting *after* the multiplication (`(long)(2*arr[right])`) doesn't help — the overflow already happened inside the parentheses. The cast must be applied *before* the multiplication so the whole operation runs in `long`.
+
+**Fix:**
+```java
 while (right <= high && (long) arr[left] > 2L * arr[right])
     right++;
+```
 
-Takeaway: Whenever a problem involves 2 * x (or any multiplication) on int[] values that could be near Integer.MAX_VALUE, cast to long before the multiplication, not after.
-
-<!---LeetCode Topics End-->
+**Takeaway:** Whenever a problem involves `2 * x` (or any multiplication) on `int[]` values that could be near `Integer.MAX_VALUE`, cast to `long` **before** the multiplication, not after.

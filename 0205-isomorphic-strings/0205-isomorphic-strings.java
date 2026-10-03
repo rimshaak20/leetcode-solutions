@@ -5,9 +5,7 @@ class Solution {
 
         for(int i=0;i<n;i++){
             if(!map.containsKey(s.charAt(i))){
-                for(char ch: map.keySet()){
-                    if(map.get(ch)==t.charAt(i)) return false;
-                }
+                if(map.containsValue(t.charAt(i))) return false;
                 map.put(s.charAt(i),t.charAt(i));
             }
             else{

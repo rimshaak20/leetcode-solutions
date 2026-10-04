@@ -10,8 +10,10 @@ class Solution {
             a[s.charAt(i)]++;
             b[t.charAt(i)]++;
         }
-        // 
-        //instead comparing like this we can do
+        // for(int i=0; i<256; i++){
+        //     if(a[i]!=b[i])  return false;
+        // }
+        // instead of comparing like this we can do
         return Arrays.equals(a,b);
     }
 

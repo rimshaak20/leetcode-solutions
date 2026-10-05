@@ -7,12 +7,16 @@ class Solution {
 
         double result = 1;
         while (N > 0) {
-            if (N % 2 == 1) {
-                result *= x;
+            if (N % 2 == 0) {
+                x *= x;
+                N /= 2;
             }
-            x *= x;
-            N /= 2;
+            else{
+                result *= x;
+                N=N-1;
+            }
         }
         return negative ? 1 / result : result;
+        
     }
 }

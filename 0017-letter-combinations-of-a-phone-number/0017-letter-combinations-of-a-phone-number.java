@@ -22,12 +22,6 @@ class Solution {
         sb.deleteCharAt(sb.length() - 1);
 
         func(idx, i + 1, digits, sb, ls); 
-
-        // char ch=digits.charAt(idx);
-        // sb.append((char)(ch + i + 51));
-        // func(idx+1, i, digits, sb, ls);
-        // sb.deleteCharAt(sb.length()-1);
-        // func(idx, i+1, digits, sb, ls);
     }
 
 }

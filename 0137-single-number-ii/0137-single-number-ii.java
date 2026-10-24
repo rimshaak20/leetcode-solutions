@@ -1,10 +1,15 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Arrays.sort(nums);
-        for(int i=1; i<nums.length; i+=3){
-            if(nums[i] != nums[i-1])
-                return nums[i-1];
+        int ans=0;
+        for(int bit=0; bit<32; bit++){
+            int count=0;
+            for(int x:nums){
+                if(((x >> bit) & 1) == 1 )  count++;
+            }
+            if(count % 3 == 1){
+                ans = ans | (1 << bit);
+            }
         }
-        return nums[nums.length-1];
+        return ans;
     }
 }

@@ -6,7 +6,7 @@ class Solution {
             xorResult ^= num;
         }
 
-        int mask = xorResult & -xorResult;
+        int mask = (xorResult & (xorResult-1)) ^ xorResult ;
 
         int group1 = 0;
         int group2 = 0;
